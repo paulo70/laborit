@@ -1,8 +1,12 @@
 import React from 'react'
 
+import './app.scss'
+
+import Header from './components/Header'
+
 const App = () => (
 	<div className = 'wrapper'>
-		<h1>Hello</h1>
+		<Header />
 	</div>
 )
 

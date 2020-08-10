@@ -1,8 +1,9 @@
 import React from 'react'
 
+import './card.scss'
+
 const Card = (props) => (
-  <div className = 'card'>
-    <h2>{props.title}</h2>
+  <div className='box-card-info'>
   </div>
 )
 

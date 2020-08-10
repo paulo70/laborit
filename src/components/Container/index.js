@@ -5,6 +5,7 @@ import './container.scss'
 
 import select  from '../Select'
 import Title   from '../Title'
+import Card    from '../Card'
 
 function Container (){
 
@@ -96,25 +97,32 @@ function Container (){
   }
 
   return (
-    <div className='container'> 
-      <select onChange = { handleChoiceBrand }>
-        { brand.map((item, index) =>
-          <option value = { item.codigo } key = { index }>{ item.nome }</option>
-        )}
-      </select>
+    <div className='container'>
+      
+      <section className='box-selects'>
+        <select onChange = { handleChoiceBrand }>
+          { brand.map((item, index) =>
+            <option value = { item.codigo } key = { index }>{ item.nome }</option>
+          )}
+        </select>
   
-      <select onChange = { handleChoiceModel } disabled = { showModel }>
-        { model.map((item, index) =>
-          <option value = { item.codigo } key = { index }>{ item.nome }</option>
-        )}
-      </select>
+        <select onChange = { handleChoiceModel } disabled = { showModel }>
+          { model.map((item, index) =>
+            <option value = { item.codigo } key = { index }>{ item.nome }</option>
+          )}
+        </select>
     
-      <select onChange = { handleGetCar } disabled = { showYear }>
-        { year.map((item, index) =>
-          <option value = { item.codigo } key = { index }>{ item.nome }</option>
-        )}
-      </select>
-
+        <select onChange = { handleGetCar } disabled = { showYear }>
+          { year.map((item, index) =>
+            <option value = { item.codigo } key = { index }>{ item.nome }</option>
+          )}
+        </select>
+      </section> 
+      
+      <section className='box-card'>
+        <h2 className='box-card-info-title'>Dados do veículo:</h2>
+        <Card />
+      </section>
     </div>
   )
 }

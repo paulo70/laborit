@@ -8,9 +8,7 @@ import Container from './components/Container'
 const App = () => (
 	<div className = 'wrapper'>
 		<Header />
-		<section>
-			<Container />
-		</section>
+		<Container />
 	</div>
 )
 

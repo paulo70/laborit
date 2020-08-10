@@ -1,0 +1,14 @@
+.box-card{
+  margin-top: 3.125em;
+  
+  &-title{
+    font-size: 14px;
+  }
+
+  &-info{
+    padding: 40px;
+    
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+  }
+}

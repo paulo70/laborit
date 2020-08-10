@@ -22,7 +22,7 @@ const Card = (props) =>  {
         <div className='box-card-info-items'>
           <h4>{props.value}</h4>
           <h5>Mês ref:{props.month}</h5>
-          <span className='box-card-info-items-heart'></span>
+          <span className='box-card-info-items-heart' onClick = {props.handleFavorite}></span>
         </div>
       </div>
     </>

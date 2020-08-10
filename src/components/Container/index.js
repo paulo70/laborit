@@ -99,6 +99,10 @@ function Container (){
     fetchData()
   }
 
+  function handleFavorite(){
+    console.log('oi')
+  }
+
   return (
     <div className='container'>
       
@@ -123,19 +127,20 @@ function Container (){
       </section> 
       
       <section className='box-card'>
-      
+
         { Object.keys(infoCar).length === 0 ? 
           
           '' 
           : 
             <Card 
-              brand = { infoCar.Marca }
-              model = { infoCar.Modelo}
-              gas   = { infoCar.Combustivel}
-              year  = { infoCar.AnoModelo}
-              fipe  = { infoCar.CodigoFipe}
-              value = { infoCar.Valor}
-              month = { infoCar.MesReferencia}
+              brand          = { infoCar.Marca }
+              model          = { infoCar.Modelo }
+              gas            = { infoCar.Combustivel }
+              year           = { infoCar.AnoModelo }
+              fipe           = { infoCar.CodigoFipe }
+              value          = { infoCar.Valor }
+              month          = { infoCar.MesReferencia }
+              handleFavorite = { handleFavorite }
             />
         }
       </section>

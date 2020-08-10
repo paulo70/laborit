@@ -14,9 +14,10 @@ function Container (){
   const [ brandValue, setValueBrand ] = useState('')
   
   const [ model, setModel           ] = useState([])
-  const [ modelValue, setModelValue ] = useState([])
+  const [ modelValue, setModelValue ] = useState('')
   
   const [ year, setYear             ] = useState([])
+  const [ yearValue, setYearValue   ] = useState('')
 
   const [ showModel, setShowModel ]   = useState(true)
   const [ showYear,  setShowYear  ]   = useState(true)
@@ -76,6 +77,24 @@ function Container (){
     fetchData()
   }
 
+  function handleGetCar(e) {
+    setYearValue(e.target.value)
+
+    const fetchData = async () => {
+
+      try{
+        const req = await axios (`${CARS}/${brandValue}/modelos/${modelValue}/anos/${e.target.value}`)
+        const res = req.data
+        
+        console.log(res)
+      } catch (error) {
+        console.log('ERROR')
+      }
+    }
+
+    fetchData()
+  }
+
   return (
     <div className='container'> 
       <select onChange = { handleChoiceBrand }>
@@ -90,7 +109,7 @@ function Container (){
         )}
       </select>
     
-      <select disabled = { showYear }>
+      <select onChange = { handleGetCar } disabled = { showYear }>
         { year.map((item, index) =>
           <option value = { item.codigo } key = { index }>{ item.nome }</option>
         )}

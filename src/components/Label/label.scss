@@ -1,0 +1,9 @@
+.box-label{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  label{
+    justify-content: left;
+  }
+}

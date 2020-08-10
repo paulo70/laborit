@@ -6,6 +6,7 @@ import './container.scss'
 import select  from '../Select'
 import Title   from '../Title'
 import Card    from '../Card'
+import Label   from '../Label'
 
 function Container (){
 
@@ -105,8 +106,13 @@ function Container (){
 
   return (
     <div className='container'>
+      <section className='box-label'>
+        <Label text = 'Escolha a Marca:' />
+        <Label text = 'Escolha o Modelo:' />
+        <Label text = 'Escolha o ano:' />
+      </section>
       
-      <section className='box-selects'>
+      <section className='box-select'>
         <select onChange = { handleChoiceBrand }>
           { brand.map((item, index) =>
             <option value = { item.codigo } key = { index }>{ item.nome }</option>

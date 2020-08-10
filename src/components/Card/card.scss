@@ -6,9 +6,40 @@
   }
 
   &-info{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
     padding: 40px;
     
     border: 1px solid #ced4da;
     border-radius: .25rem;
+
+    &-items{
+      &-list{
+        list-style: none;
+
+        li:first-child{
+          border-radius: 0.625em;
+          background: #e0dddd4a;
+         
+          margin: 0;
+          padding: 0.500em 0.938em;
+        }
+      
+        li{
+          display: inline-flex;
+          margin: 0 0.625em;
+        }
+      }
+
+      &-heart{
+        border: 1px solid #ccc;
+        padding: 20px;
+        border: 1px solid #ccc;
+        padding: 20px;
+        margin-top: 34px;
+        display: block
+      }
+    }
   }
 }

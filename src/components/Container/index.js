@@ -20,6 +20,8 @@ function Container (){
   const [ year, setYear             ] = useState([])
   const [ yearValue, setYearValue   ] = useState('')
 
+  const [ infoCar, setInfocar       ] = useState({})
+
   const [ showModel, setShowModel ]   = useState(true)
   const [ showYear,  setShowYear  ]   = useState(true)
 
@@ -88,6 +90,7 @@ function Container (){
         const res = req.data
         
         console.log(res)
+        setInfocar(res)
       } catch (error) {
         console.log('ERROR')
       }
@@ -120,8 +123,21 @@ function Container (){
       </section> 
       
       <section className='box-card'>
-        <h2 className='box-card-info-title'>Dados do veículo:</h2>
-        <Card />
+      
+        { Object.keys(infoCar).length === 0 ? 
+          
+          '' 
+          : 
+            <Card 
+              brand = { infoCar.Marca }
+              model = { infoCar.Modelo}
+              gas   = { infoCar.Combustivel}
+              year  = { infoCar.AnoModelo}
+              fipe  = { infoCar.CodigoFipe}
+              value = { infoCar.Valor}
+              month = { infoCar.MesReferencia}
+            />
+        }
       </section>
     </div>
   )

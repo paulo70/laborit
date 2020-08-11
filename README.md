@@ -20,6 +20,11 @@
 
 ![Alt text](/src/assets/select-year.png?raw=true "Desktop screen")
 
+4) Infos Car
+
+![Alt text](/src/assets/info-cars.png?raw=true "Desktop screen")
+
+
 5) Favorites
 
 ![Alt text](/src/assets/favorite.png?raw=true "Desktop screen")

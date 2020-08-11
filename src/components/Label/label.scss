@@ -1,9 +1,11 @@
 .box-label{
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
 
   label{
-    justify-content: left;
+   color: #736F6C;
+   font-size: 1.125em;
+
+   flex-grow: 1;
   }
 }

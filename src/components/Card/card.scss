@@ -1,5 +1,10 @@
 .box-card{
-  margin-top: 3.125em;
+  margin-top: 5.000em;
+
+  h2{
+    font-size: 1.375em;
+    color: #736F6C;
+  }
   
   &-title{
     font-size: 14px;
@@ -9,18 +14,26 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    padding: 40px;
+    padding: 1.250em;
     
     border: 1px solid #ced4da;
     border-radius: .25rem;
 
     &-items{
+      h4,h5{
+        color: #82898B;
+        margin: 0.625em 0;
+        font-size: 1.125em;
+      }
+
       &-list{
         list-style: none;
 
         li:first-child{
           border-radius: 0.625em;
           background: #e0dddd4a;
+          font-size: 1.063em;
+          font-weight: 500;
          
           margin: 0;
           padding: 0.500em 0.938em;

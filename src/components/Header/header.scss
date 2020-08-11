@@ -1,13 +1,15 @@
 .header{
 	background: #e0dddd4a;
-	-moz-box-shadow: 0 0 14px 3px #eae8e8;
-	-webkit-box-shadow: 0 0 14px 3px #eae8e8;
+	// -moz-box-shadow: 0 0 14px 3px #eae8e8;
+	// -webkit-box-shadow: 0 0 14px 3px #eae8e8;
 
 	padding: 1.250em 1.250em 1.875em 1.250em;
 
 	&-title{
-		color: #bbb;
+		color: #c2c6c7;
 		text-transform: uppercase;
+    font-weight: 300;
+    font-size: 2.500em;
 
     padding-top: 0.500em;
 	}

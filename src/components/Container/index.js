@@ -109,7 +109,6 @@ function Container (){
         const req = await axios (`${CARS}/${brandValue}/modelos/${modelValue}/anos/${e.target.value}`)
         const res = req.data
         setInfocar(res)
-        setFavorite(res)
 
       } catch (error) {
         console.log('ERROR')

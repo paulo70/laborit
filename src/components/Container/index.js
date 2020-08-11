@@ -3,10 +3,11 @@ import axios from 'axios'
 
 import './container.scss'
 
-import select  from '../Select'
-import Title   from '../Title'
-import Card    from '../Card'
-import Label   from '../Label'
+import select   from '../Select'
+import Title    from '../Title'
+import Card     from '../Card'
+import Label    from '../Label'
+import Favorite from '../Favorites'
 
 function Container (){
 
@@ -22,25 +23,44 @@ function Container (){
   const [ yearValue, setYearValue   ] = useState('')
 
   const [ infoCar, setInfocar       ] = useState({})
+  const [ favorite, setFavorite     ] = useState({})
 
   const [ showModel, setShowModel ]   = useState(true)
   const [ showYear,  setShowYear  ]   = useState(true)
 
+  const [  loadTask, setLoadTask  ]   = useState(true)
+
+
   useEffect(() => {
     const fetchData = async () => {
-
       try{
         const req = await axios (CARS)
         const res = req.data
-
         setBrand(res)
+
       } catch (error) {
         console.log('ERROR')
-      }
     }
-
+  }
     fetchData()
   },[])
+
+  useEffect(() => {
+
+   function getTasks(){
+    const carsDB  = localStorage['infos']
+    let listTasks = carsDB ? JSON.parse(carsDB) : []
+
+    setFavorite(listTasks)
+   }
+
+   if(loadTask){
+    getTasks()
+    setLoadTask(false)
+   }
+
+  },[loadTask])
+
 
   function handleChoiceBrand(e){
     setValueBrand(e.target.value)
@@ -51,8 +71,8 @@ function Container (){
       try{
         const req = await axios (`${CARS}/${e.target.value}/modelos`)
         const res = req.data.modelos
-      
         setModel(res)
+
       } catch (error) {
         console.log('ERROR')
       }
@@ -70,9 +90,8 @@ function Container (){
       try{
         const req = await axios (`${CARS}/${brandValue}/modelos/${e.target.value}/anos`)
         const res = req.data
-        
-        console.log(res)
         setYear(res)
+
       } catch (error) {
         console.log('ERROR')
       }
@@ -81,7 +100,7 @@ function Container (){
     fetchData()
   }
 
-  function handleGetCar(e) {
+  function handleGetInfoCar(e) {
     setYearValue(e.target.value)
 
     const fetchData = async () => {
@@ -89,9 +108,9 @@ function Container (){
       try{
         const req = await axios (`${CARS}/${brandValue}/modelos/${modelValue}/anos/${e.target.value}`)
         const res = req.data
-        
-        console.log(res)
         setInfocar(res)
+        setFavorite(res)
+
       } catch (error) {
         console.log('ERROR')
       }
@@ -101,7 +120,12 @@ function Container (){
   }
 
   function handleFavorite(){
-    console.log('oi')
+
+    const carsDB  = localStorage['infos']
+    const infos   = carsDB ? JSON.parse(carsDB) : []
+
+    infos.push(infoCar)
+    localStorage['infos'] = JSON.stringify(infos)
   }
 
   return (
@@ -125,7 +149,7 @@ function Container (){
           )}
         </select>
     
-        <select onChange = { handleGetCar } disabled = { showYear }>
+        <select onChange = { handleGetInfoCar } disabled = { showYear }>
           { year.map((item, index) =>
             <option value = { item.codigo } key = { index }>{ item.nome }</option>
           )}
@@ -149,6 +173,24 @@ function Container (){
               handleFavorite = { handleFavorite }
             />
         }
+      </section>
+
+      <section className='box-favorite'>
+        <h2>Veiculos Favoritados:</h2>
+        <table className='box-favorite-table'>
+          <thead>
+            <tr>
+              <th>Marca</th>
+              <th>Modelo</th>
+              <th>Preço</th>
+            </tr>
+          </thead>
+          <tbody>
+            <Favorite 
+              favorite = { favorite }
+            />
+          </tbody>
+        </table>
       </section>
     </div>
   )

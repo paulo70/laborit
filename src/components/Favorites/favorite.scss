@@ -1,0 +1,31 @@
+.box-favorite{
+  display: flex;
+  flex-direction: column;
+  margin-top: 2.500em;
+
+  h2{
+    font-size: 1.375em;
+    color: #736F6C;
+  }
+
+  &-table{
+    border-top: 1px solid #ced4da;
+    thead{
+      tr{
+        th{
+          padding: 0.938em 0;
+        }
+      }
+    }
+    tbody{
+      tr{
+        td{
+          font-size: 0.875em;
+          border-bottom: 1px solid #ced4da;
+
+          padding: 0.938em 0;
+        }
+      }
+    }
+  }
+}

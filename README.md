@@ -8,7 +8,7 @@
 
 
 1) Select Brand
-![Alt text](/laborit/src/assets/selects-car.png?raw=true "Desktop screen")
+![Alt text](/laborit/blob/master/src/assets/selec-car.png?raw=true "Desktop screen")
 
 2) Select Model
 ![Alt text](/laborit/src/assets/select-model.png?raw=true "Desktop screen")

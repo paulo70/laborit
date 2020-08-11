@@ -2,6 +2,8 @@ import React from 'react'
 
 import './card.scss'
 
+import Heart from '../../assets/heart.png'
+
 const Card = (props) =>  {
 
   return (
@@ -23,7 +25,11 @@ const Card = (props) =>  {
         <div className='box-card-info-items'>
           <h4>{props.value}</h4>
           <h5> Mês ref: {props.month} </h5>
-          <span className='box-card-info-items-heart' onClick = {props.handleFavorite}></span>
+          <span 
+            className ='box-card-info-items-heart' 
+            onClick   = {props.handleFavorite}>
+            <img src  = { Heart } />
+          </span>
         </div>
       </div>
     </>

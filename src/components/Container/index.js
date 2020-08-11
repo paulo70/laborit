@@ -8,6 +8,7 @@ import Title    from '../Title'
 import Card     from '../Card'
 import Label    from '../Label'
 import Favorite from '../Favorites'
+import Error    from '../Error'
 
 function Container (){
 
@@ -32,9 +33,12 @@ function Container (){
 
   const [ isError, setIsError     ]   = useState(false)
 
+  const [ isLoading, setIsLoading ]   = useState(false)
+
 
   useEffect(() => {
     const fetchData = async () => {
+      
       try{
         const req = await axios (CARS)
         const res = req.data
@@ -88,7 +92,6 @@ function Container (){
     setModelValue(e.target.value)
 
     const fetchData = async () => {
-
       try{
         const req = await axios (`${CARS}/${brandValue}/modelos/${e.target.value}/anos`)
         const res = req.data
@@ -106,6 +109,7 @@ function Container (){
     setYearValue(e.target.value)
 
     const fetchData = async () => {
+      setIsLoading(true)
 
       try{
         const req = await axios (`${CARS}/${brandValue}/modelos/${modelValue}/anos/${e.target.value}`)
@@ -115,6 +119,8 @@ function Container (){
       } catch (error) {
         setIsError(true)
       }
+
+      setIsLoading(false)
     }
 
     fetchData()
@@ -136,47 +142,51 @@ function Container (){
         <Label text = 'Escolha o Modelo:' />
         <Label text = 'Escolha o ano:' />
       </section>
-      
+
       <section className='box-select'>
         <select onChange = { handleChoiceBrand }>
           { brand.map((item, index) =>
             <option value = { item.codigo } key = { index }>{ item.nome }</option>
           )}
         </select>
-  
+
         <select onChange = { handleChoiceModel } disabled = { showModel }>
           { model.map((item, index) =>
             <option value = { item.codigo } key = { index }>{ item.nome }</option>
           )}
         </select>
-    
+
         <select onChange = { handleGetInfoCar } disabled = { showYear }>
           { year.map((item, index) =>
             <option value = { item.codigo } key = { index }>{ item.nome }</option>
           )}
         </select>
       </section>
-
-      { isError && <Error /> } 
       
-      <section className='box-card'>
+      { isError && <Error /> }
 
-        { Object.keys(infoCar).length === 0 ? 
-          
-          '' 
-          : 
-            <Card 
-              brand          = { infoCar.Marca }
-              model          = { infoCar.Modelo }
-              gas            = { infoCar.Combustivel }
-              year           = { infoCar.AnoModelo }
-              fipe           = { infoCar.CodigoFipe }
-              value          = { infoCar.Valor }
-              month          = { infoCar.MesReferencia }
-              handleFavorite = { handleFavorite }
-            />
-        }
-      </section>
+      { isLoading ? ( <div className='loading'>Loading ...</div> ) : (
+
+        <section className='box-card'>
+
+          { Object.keys(infoCar).length === 0 ? 
+            
+            '' 
+            : 
+              <Card 
+                brand          = { infoCar.Marca }
+                model          = { infoCar.Modelo }
+                gas            = { infoCar.Combustivel }
+                year           = { infoCar.AnoModelo }
+                fipe           = { infoCar.CodigoFipe }
+                value          = { infoCar.Valor }
+                month          = { infoCar.MesReferencia }
+                handleFavorite = { handleFavorite }
+              />
+          }
+        </section>
+      )} 
+      
 
       <section className='box-favorite'>
         <h2>Veiculos Favoritados:</h2>

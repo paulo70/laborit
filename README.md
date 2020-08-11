@@ -6,6 +6,7 @@
 
 3) Open your browser at port 3000 and you see application run.
 
+---------------------------------------------------------------
 
 1) Select Brand
 

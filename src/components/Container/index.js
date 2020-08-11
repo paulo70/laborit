@@ -30,6 +30,8 @@ function Container (){
 
   const [  loadTask, setLoadTask  ]   = useState(true)
 
+  const [ isError, setIsError     ]   = useState(false)
+
 
   useEffect(() => {
     const fetchData = async () => {
@@ -39,7 +41,7 @@ function Container (){
         setBrand(res)
 
       } catch (error) {
-        console.log('ERROR')
+        setIsError(true)
     }
   }
     fetchData()
@@ -74,7 +76,7 @@ function Container (){
         setModel(res)
 
       } catch (error) {
-        console.log('ERROR')
+        setIsError(true)
       }
     }
 
@@ -93,7 +95,7 @@ function Container (){
         setYear(res)
 
       } catch (error) {
-        console.log('ERROR')
+        setIsError(true)
       }
     }
 
@@ -111,7 +113,7 @@ function Container (){
         setInfocar(res)
 
       } catch (error) {
-        console.log('ERROR')
+        setIsError(true)
       }
     }
 
@@ -153,7 +155,9 @@ function Container (){
             <option value = { item.codigo } key = { index }>{ item.nome }</option>
           )}
         </select>
-      </section> 
+      </section>
+
+      { isError && <Error /> } 
       
       <section className='box-card'>
 

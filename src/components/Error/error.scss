@@ -1,0 +1,12 @@
+.error{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+  &-title{
+    font-size: 40px;
+    text-transform: uppercase;
+    color: #CC0D1F;
+  }
+}

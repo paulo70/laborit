@@ -4,7 +4,9 @@
 
 2) After that run this command 'npm install' to install all dependencies.
 
-3) Open your browser at port 3000 and you see application run.
+3) Run this command 'npm run dev'
+
+4) Open your browser at port 3000 and you see application run.
 
 ---------------------------------------------------------------
 
